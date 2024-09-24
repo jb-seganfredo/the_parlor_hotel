@@ -1,5 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap');
+
 :root {
     --color-white: #fff;
+    --color-black: #000;
+    --color-red-flag:#D80621;
+    --black-shadow: #33333330;
+
+
+    --font-title: 'Raleway', sans-serif;
+    --font-text: 'Poppins', sans-serif;
+    --font-fancy: 'GFS Didot', serif;
 }
 
 * {
@@ -9,49 +21,61 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-text)
 }
-
-
 
 /*----------------- Header ----------------*/
 
 header {
-    background-color: #33333330;
+    background-color: var(--black-shadow);
     color: var(--color-white);
     padding: 10px 0;
     text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 10rem;   
     z-index: 1000;
     position: relative;
+    height: 10vh;
+    min-width: 100%;
 }
 
-header ul {
+.reservationButtonMobile {
+    display: none;
+    color: var(--color-red-flag)
+}
+
+header .mobile {
+    display: none;
+}
+
+header .desktopMenu ul {
     display: flex;
     gap: 1.5rem;
     list-style: none;
 }
 
-header ul a {
+header .desktopMenu ul a {
     color: var(--color-white);
     text-decoration: none;
 }
 
-header ul a:hover {
+header .desktopMenu a:hover {
     opacity: 0.6;
     color: #2a2a2a;
 }
 
 header button {
-    background-color: #333333;
+    background-color: var(--color-red-flag);
     color: var(--color-white);
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 2rem;
     cursor: pointer;
-    border-radius: 1rem;
+    border-radius: 0.4rem;
 }
 
 header button:hover {
@@ -67,7 +91,7 @@ header button:hover {
     justify-content: center;
     align-items: center;
     z-index: -1;
-    height: 100vh;
+    height: 90vh;
 }
 
 .banner video {
@@ -82,7 +106,6 @@ header button:hover {
 .bannerText {
     position: relative;
     z-index: 1;
-    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -103,15 +126,67 @@ header button:hover {
     z-index: 1;
     text-align: center;
 }
-
-.banner button {
-    background-color: var(--color-white);
-    color: black;
-    border: none;
-    padding: 1rem;
-    cursor: pointer;
+.btn {
+    position: relative;
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: 2rem;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 2rem 8rem;
+    border: 0.2rem solid var(--color-red-flag);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    z-index: 1;
+    text-decoration: none;
+  }
+  
+  .btn::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    width: 200%;
+    height: 300%;
     border-radius: 1rem;
-}
+    background-color: var(--color-red-flag);
+    z-index: -1;
+    transform: translateX(-50%);
+    transition: 250ms ease;
+  }
+  
+  .btn .text-1, .btn .text-2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap; /* Para evitar quebra de linha nos textos */
+    color: var(--color-white);
+    transition: 250ms ease;
+  }
+  
+  .btn .text-1 {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .btn .text-2 {
+    top: 120%; /* Inicialmente fora da área visível do botão */
+  }
+  
+  .btn:is(:hover, :focus-visible)::before {
+    bottom: -100%;
+  }
+  
+  .btn:is(:hover, :focus-visible) .text-1 {
+    top: -100%; /* Movendo o texto-1 para fora ao hover */
+  }
+  
+  .btn:is(:hover, :focus-visible) .text-2 {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  
 
 /*----------------- About Us ----------------*/
 
@@ -127,27 +202,35 @@ header button:hover {
 .aboutUsContainer {
     display: flex;
     align-items: center;
-    flex: 0 0 80%;
+    flex: 0 0 75%;
     width: 100%;
-
+    background-image: url(./assets/images/about1.jpg); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
 }	
 
-.aboutUsImage {
-    width: 90%;
-    height: 100vh;
-    border-radius: 0.3rem;
-    object-fit: cover;
-    z-index: -1;
+.aboutLogo h3 {
+    font-size: 2.5rem;
+    padding: 1rem;
     display: block;
+    ;
 }
 
 .aboutText {
     color: var(--color-white);
-    width: 50%;
+    text-align: justify;
+    width: 60%;
     padding: 2rem;
     z-index: 1;
     position: absolute;
-    background-color: #2a2a2a21;
+    background-color: #2a2a2a75;
+    transition: all 0.3s ease-in-out;
+}
+
+.aboutText:hover {
+    scale: 1.06;
+    transition: all 0.3s ease-in-out;
 }
 
 .about h2 {
@@ -155,46 +238,434 @@ header button:hover {
     padding: 1rem;
 }
 
-aside {
+.about p {
+    font-size: 1.1rem;
+    padding: 0.1rem;
+}
+
+.about aside {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin-right: 4rem;
+    /* margin-right: 3rem; */
     border-radius: 0.7rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    height: 100vh;
 }
 
-aside h3 {
+.about aside .aboutAsideTitle .text-1 {
     font-size: 1.5rem;
     color: var(--color-white);
-    background-color: #2a2a2ae4; 
-    padding: 4rem;   
+    background-color: var(--color-red-flag);
+    padding: 4rem 0 ;   
     text-align: center;
-    border-radius: 1rem 1rem 0 0;
+    transition: 0.3s ease-in-out; 
+    background-size: 110%;
+    background-position: center center;
 }
 
-aside ul {
+.aboutAside h3 .text-1 {
+    transition: all 0.3 ease;
+    color: #000;
+}
+.about h3 .text-1::after {
+    transition: rotateX(90dec);
+}
+
+.about aside p {
+    font-size: 1.8rem;
+    font-weight: 800;
+    padding-bottom: 1rem;
+    font-family: serif;
+}
+
+.about aside ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     list-style: none;
-    padding: 3rem;
+    padding: 2rem 3rem;
 }
 
-aside img {
-    width: 100%;
-    height: 100%;
+.about aside img {
+    width: 90%;
+    height: 90%;
     object-fit: cover;
 }
 
-aside ul li {
+.about aside ul li {
     display: flex;
-    padding: 0rem 0;
+    margin: 0.1rem 0;
 }
 
-aside a {
+.about aside a {
     text-decoration: none;
+    color: black;
+    padding: 0.2rem 1rem;
+}
+
+.about a {
+    box-shadow: inset 0 0 0 0 var(--color-red-flag);
+    color: var(--color-red-flag);
+    padding: 0 .25rem;
+    margin: 0 -.25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.about a:hover {
+    color: #fff;
+    box-shadow: inset 200px 0 0 0 var(--color-red-flag);;
+}
+
+.about .canadaFlag {
+    width: 5rem;
+    padding: 3rem 0;
+}
+  
+/* ----------------- Our Services ----------------*/
+
+.services {
+    display: block;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.services .servicesText {
+    padding: 1rem;
+}
+.services h2 {
+    font-size: 2.5rem;
+    padding: 1rem;
+}   
+
+.servicesMenu {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5rem;
+    padding: 2rem 8rem;
+}
+
+.services img {
+    width: 3rem;
+    object-fit: cover;
+}
+
+.servicesMenuCard {
+    display: block;
+}
+
+/*----------------- Our Rooms ----------------*/
+
+.ourRooms {
+    display: block;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.ourRooms .ourRoomsText {
+    padding: 1rem;
+
+}
+
+.ourRooms p {
+    font-size: 1.9rem;
+    padding: 1rem;
+    font-family: var(--font-title);
+}
+
+.ourRooms h2 {
+    font-size: 3rem;
+    padding: 1.5rem;
+}
+
+.ourRooms img {
+    width: 40rem;
+}
+
+.list {
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+  list-style: none;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.item {
+  flex-shrink: 0;
+  width: 80%;
+  height: 90vh;
+
+  background-color: #FFF;
+
+  scroll-snap-align: center;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  font-family: sans-serif;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+/*----------------- Contact Us ----------------*/
+
+fieldset {
+    margin: 0 auto;
+    border: 0.1rem solid transparent; 
+    border-color: black; 
+    box-sizing: border-box; 
+    padding: 1rem; 
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+fieldset .contactUsImage img {
+    width: 28rem;
+}
+
+fieldset legend {
+font-size: 1.5rem;
+padding: 2rem;
+font-weight: 600;
+}
+
+.contactUsForm {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.contactUsForm input {
+    padding: 0.8rem;
+    margin: 1rem;
+    width: 100%;
+}
+
+.contactUsForm button {
+    background-color: var(--color-red-flag);
+    color: var(--color-white);
+    border: none;
+    padding: 0.7rem 4rem;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    margin: 1rem 0 0 auto;
+    display: block;
 }
 
 /*----------------- Footer ----------------*/
+
+footer {
+    background-color: var(--black-shadow);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 10rem;
+    z-index: 1000;
+    position: relative;
+    min-width: 100%;
+}
+
+footer h3 {
+    font-size: 1.7rem;
+    padding: 1rem;
+}
+
+footer .socialMediaicons {
+    display: flex;
+}
+
+footer .socialMediaicons img {
+    width: 1.8rem;
+    margin: 0 0.4rem;
+    cursor: pointer;
+    padding-bottom: 2rem;
+}
+
+footer .socialMediaicons img:hover {
+    opacity: 0.6;
+}
+
+.copyrights {
+    color: var(--color-white);
+    min-width: 100%;
+    display: flex;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: var(--color-black);
+    bottom: 0;
+    left: 0;
+    right: 0; 
+    z-index: 999; 
+}
+
+/*----------------- Reusable Styling -----------------*/
+
+.titleColor {
+    color: var(--color-red-flag);
+}
+
+h1, h2 {
+    font-family: var(--font-title);
+}
+
+h3 {
+    font-family: var(--font-fancy);
+}
+
+button {
+    font-family: var(--font-title);
+    font-weight: 600;
+}
+
+
+/*-------------- Media Queries--------------*/
+
+@media screen and (max-width: 475px) {
+    
+    header {
+        padding: 1rem;
+    }
+
+    .desktopMenu {
+        display: none;
+    }
+
+    .reservationButtonMobile {
+        display: none;
+    }
+
+    header .mobile {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    header .mobileMenu {
+        display: none;
+    }
+
+    header .mobileMenu ul a {
+        color: var(--color-white);
+        text-decoration: none;
+    }
+
+    header .mobileMenu a:hover {
+        opacity: 0.6;
+        color: #2a2a2a;
+    }
+
+    header .reservationButton {
+        display: none;
+    }
+
+    .banner h2 {
+        font-size: 2rem;
+    }
+
+    .aboutText p {
+        font-size: 1rem;  
+    }
+
+    .aboutText {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .aboutUsContainer {
+        flex: 100%;
+    }
+
+    .aboutUsImage {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .about aside {
+        display: none !important;
+}
+
+}
+
+@media screen and (min-width: 475px) and (max-width: 1120px) {
+    
+    header {
+        padding: 1rem;
+    }
+
+    .desktopMenu {
+        display: none;
+    }
+    
+    .reservationButtonMobile {
+        display: block;
+    }
+
+    header .mobile {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    header .mobileMenu {
+        display: none;
+    }
+
+    header .mobileMenu ul a {
+        color: var(--color-white);
+        text-decoration: none;
+    }
+
+    header .mobileMenu a:hover {
+        opacity: 0.6;
+        color: #2a2a2a;
+    }
+
+    header .reservationButton {
+        display: none;
+    }
+
+    .banner h2 {
+        font-size: 2rem;
+    }
+
+    .aboutText p {
+        font-size: 1rem;  
+    }
+
+    .aboutText {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .aboutUsContainer {
+        flex: 100%;
+    }
+
+    .aboutUsImage {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .about aside {
+        display: none !important;
+}
+
+.servicesMenu {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}}
