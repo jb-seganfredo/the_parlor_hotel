@@ -7,7 +7,7 @@
     --color-black: #000;
     --color-red-flag:#D80621;
     --black-shadow: #33333330;
-
+    --darker-black-shadow: #000000ad;
 
     --font-title: 'Raleway', sans-serif;
     --font-text: 'Poppins', sans-serif;
@@ -18,10 +18,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--font-text)
+    font-family: var(--font-text);
 }
 
 /*----------------- Header ----------------*/
@@ -29,7 +30,6 @@ body {
 header {
     background-color: var(--black-shadow);
     color: var(--color-white);
-    padding: 10px 0;
     text-align: center;
     top: 0;
     left: 0;
@@ -44,12 +44,7 @@ header {
     min-width: 100%;
 }
 
-.reservationButtonMobile {
-    display: none;
-    color: var(--color-red-flag)
-}
-
-header .mobile {
+.reservationButtonMobile, .mobile{
     display: none;
 }
 
@@ -62,28 +57,61 @@ header .desktopMenu ul {
 header .desktopMenu ul a {
     color: var(--color-white);
     text-decoration: none;
+    position: relative;
 }
 
-header .desktopMenu a:hover {
-    opacity: 0.6;
-    color: #2a2a2a;
+header .desktopMenu ul a::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-red-flag);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+header .desktopMenu ul a:hover::before {
+    width: 100%;
+    left: 0;
 }
 
 header button {
-    background-color: var(--color-red-flag);
+    position: relative;
+    background-color: var(--color-black);
     color: var(--color-white);
-    border: none;
     padding: 0.5rem 2rem;
     cursor: pointer;
     border-radius: 0.4rem;
+    overflow: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    z-index: 1;
+    border: none;
+}
+
+header button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--color-red-flag);
+    transition: width 0.4s ease;
+    z-index: -1;
+}
+
+header button:hover::before {
+    width: 100%;
 }
 
 header button:hover {
-    scale: 1.06;
-    transition: 0.3s ease;
+    color: var(--color-white);
+    background-color: var(--color-red-flag); /* Fundo fica branco */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Adiciona sombra suave */
 }
 
-/*----------------- Main ----------------*/
+/*----------------- Banner ----------------*/
 
 .banner {
     display: flex;
@@ -101,6 +129,7 @@ header button:hover {
     position: absolute;
     top: 0;
     left: 0;
+    filter: brightness(0.7);
 }
 
 .bannerText {
@@ -113,19 +142,21 @@ header button:hover {
     gap: 1rem;
 }
 
+.banner h2, .banner p {
+    color: var(--color-white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 .banner h2 {
     font-size: 3rem;
-    color: var(--color-white);
-    z-index: 1;
-    text-align: center;
+    animation: fadeIn 1s ease forwards;
 }
 
 .banner p {
     font-size: 1.5rem;
-    color: var(--color-white);
-    z-index: 1;
-    text-align: center;
+    animation: fadeIn 1.5s ease forwards;
 }
+
 .btn {
     position: relative;
     color: var(--color-white);
@@ -139,9 +170,11 @@ header button:hover {
     overflow: hidden;
     z-index: 1;
     text-decoration: none;
-  }
-  
-  .btn::before {
+    transition: transform 0.3s ease;
+    animation: fadeIn 2s ease forwards;
+}
+
+.btn::before {
     content: "";
     position: absolute;
     bottom: 100%;
@@ -153,50 +186,60 @@ header button:hover {
     z-index: -1;
     transform: translateX(-50%);
     transition: 250ms ease;
-  }
-  
-  .btn .text-1, .btn .text-2 {
+}
+
+.btn .text-1, .btn .text-2 {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    white-space: nowrap; /* Para evitar quebra de linha nos textos */
+    white-space: nowrap; 
     color: var(--color-white);
     transition: 250ms ease;
-  }
-  
-  .btn .text-1 {
+}
+
+.btn .text-1 {
     top: 50%;
     transform: translate(-50%, -50%);
-  }
-  
-  .btn .text-2 {
-    top: 120%; /* Inicialmente fora da área visível do botão */
-  }
-  
-  .btn:is(:hover, :focus-visible)::before {
+}
+
+.btn .text-2 {
+    top: 120%;
+}
+
+.btn:is(:hover, :focus-visible)::before {
     bottom: -100%;
-  }
-  
-  .btn:is(:hover, :focus-visible) .text-1 {
-    top: -100%; /* Movendo o texto-1 para fora ao hover */
-  }
-  
-  .btn:is(:hover, :focus-visible) .text-2 {
+}
+
+.btn:is(:hover, :focus-visible) .text-1 {
+    top: -100%; 
+}
+
+.btn:is(:hover, :focus-visible) .text-2 {
     top: 50%;
     transform: translate(-50%, -50%);
-  }
-  
-  
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /*----------------- About Us ----------------*/
 
-.about {
+#about {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     height: 100vh;
     margin: 0;
+    background: url(./assets/images/about1.jpg) no-repeat center/cover;
 }
 
 .aboutUsContainer {
@@ -204,9 +247,6 @@ header button:hover {
     align-items: center;
     flex: 0 0 75%;
     width: 100%;
-    background-image: url(./assets/images/about1.jpg); 
-    background-size: cover;
-    background-repeat: no-repeat;
     height: 100vh;
 }	
 
@@ -214,7 +254,6 @@ header button:hover {
     font-size: 2.5rem;
     padding: 1rem;
     display: block;
-    ;
 }
 
 .aboutText {
@@ -224,35 +263,34 @@ header button:hover {
     padding: 2rem;
     z-index: 1;
     position: absolute;
-    background-color: #2a2a2a75;
+    background-color: var(--darker-black-shadow);
     transition: all 0.3s ease-in-out;
 }
 
 .aboutText:hover {
-    scale: 1.06;
-    transition: all 0.3s ease-in-out;
+    transform: scale(1.05);
 }
 
-.about h2 {
+#about h2 {
     font-size: 2.5rem;
     padding: 1rem;
 }
 
-.about p {
+#about p {
     font-size: 1.1rem;
     padding: 0.1rem;
 }
 
-.about aside {
+#about aside {
     display: flex;
     flex-direction: column;
-    /* margin-right: 3rem; */
     border-radius: 0.7rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     height: 100vh;
+    background-color: var(--darker-black-shadow);
 }
 
-.about aside .aboutAsideTitle .text-1 {
+#about aside .aboutAsideTitle .text-1 {
     font-size: 1.5rem;
     color: var(--color-white);
     background-color: var(--color-red-flag);
@@ -267,18 +305,19 @@ header button:hover {
     transition: all 0.3 ease;
     color: #000;
 }
-.about h3 .text-1::after {
+#about h3 .text-1::after {
     transition: rotateX(90dec);
 }
 
-.about aside p {
+#about aside p {
+    color: var(--color-white);
     font-size: 1.8rem;
     font-weight: 800;
     padding-bottom: 1rem;
     font-family: serif;
 }
 
-.about aside ul {
+#about aside ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -287,24 +326,23 @@ header button:hover {
     padding: 2rem 3rem;
 }
 
-.about aside img {
+#about aside img {
     width: 90%;
-    height: 90%;
     object-fit: cover;
 }
 
-.about aside ul li {
+#about aside ul li {
     display: flex;
     margin: 0.1rem 0;
 }
 
-.about aside a {
+#about aside a {
     text-decoration: none;
-    color: black;
+    color: var(--color-white);
     padding: 0.2rem 1rem;
 }
 
-.about a {
+#about a {
     box-shadow: inset 0 0 0 0 var(--color-red-flag);
     color: var(--color-red-flag);
     padding: 0 .25rem;
@@ -312,12 +350,12 @@ header button:hover {
     transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
 
-.about a:hover {
+#about a:hover {
     color: #fff;
     box-shadow: inset 200px 0 0 0 var(--color-red-flag);;
 }
 
-.about .canadaFlag {
+#about .canadaFlag {
     width: 5rem;
     padding: 3rem 0;
 }
@@ -335,6 +373,7 @@ header button:hover {
 .services .servicesText {
     padding: 1rem;
 }
+
 .services h2 {
     font-size: 2.5rem;
     padding: 1rem;
@@ -355,14 +394,27 @@ header button:hover {
 
 .servicesMenuCard {
     display: block;
+    transition: transform 0.3s ease-in-out;
 }
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0); /* Retorna à posição original */
+}
+
 
 /*----------------- Our Rooms ----------------*/
 
 .ourRooms {
     display: block;
     min-height: 100vh;
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 .ourRooms .ourRoomsText {
@@ -472,10 +524,7 @@ footer {
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
-    padding: 1rem 10rem;
-    z-index: 1000;
-    position: relative;
-    min-width: 100%;
+    bottom: 0;
 }
 
 footer h3 {
@@ -507,9 +556,6 @@ footer .socialMediaicons img:hover {
     align-items: center;
     padding: 0.5rem;
     background-color: var(--color-black);
-    bottom: 0;
-    left: 0;
-    right: 0; 
     z-index: 999; 
 }
 
@@ -595,10 +641,29 @@ button {
         border-radius: 0;
     }
 
-    .about aside {
+    #about aside {
         display: none !important;
 }
 
+.servicesMenu {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+    padding: 1rem;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+fieldset .contactUs {
+    font-size: 0.3rem;
+}
+
+fieldset .contactUsImage img {
+    display: none;
+}
 }
 
 @media screen and (min-width: 475px) and (max-width: 1120px) {
@@ -661,11 +726,22 @@ button {
         border-radius: 0;
     }
 
-    .about aside {
+    #about aside {
         display: none !important;
 }
+
+
 
 .servicesMenu {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
-}}
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+}
+
+}
