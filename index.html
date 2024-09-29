@@ -13,39 +13,44 @@
     <!--- HEADER -->
 
     <header>
-      <h1>The <span class="titleColor">P</span>arlor</h1>
-
+      <h1>The Parlor</h1>
+    
       <div class="reservationButtonMobile">
         <button>BOOK NOW</button>
       </div>
-
+    
       <div class="mobile">
-
-        <div class="mobileMenu">
-          <ul>
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="#about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="gallery.html">Our Rooms</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-
         <a href="#mobileMenu" class="menuIcon">
           <img src="assets/images/hamburguerMenu.png" alt="Menu Icon" />
         </a>
+        <div class="mobileMenu">
+       
+          <button class="closeMenu">X</button> 
+          <ul>
+            <li><a href="/index.html" class="mobileListMenu">Home</a></li>
+            <hr>
+            <li><a href="#about" class="mobileListMenu">About</a></li>
+            <hr>
+            <li><a href="#sectionServices" class="mobileListMenu">Services</a></li>
+            <hr>
+            <li><a href="#rooms" class="mobileListMenu">Our Rooms</a></li>
+            <hr>
+            <li><a href="#sectionContact" class="mobileListMenu">Contact</a></li>
+          </ul>
+          
+        </div>
       </div>
-
+    
       <div class="desktopMenu">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="gallery.html">Our Rooms</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#sectionServices">Services</a></li>
+          <li><a href="#rooms">Our Rooms</a></li>
+          <li><a href="#sectionContact">Contact</a></li>
         </ul>
       </div>
-
+    
       <div class="reservationButton">
         <button>BOOK NOW</button>
       </div>
@@ -72,55 +77,58 @@
     <!--- ABOUT US -->
 
     <section id="about">
-      <div class="aboutUsContainer">
-        <div class="aboutText">
+      <img src="assets/images/aboutUs.jpg" alt="Parlor Hotel image" class="parlorImage"/>
+      <div class="aboutUsContainer hidden">
 
-          <h2>Our Story</h2>
+        
+        <div class="aboutText">
+          <div class="aboutTitle">
+            <h2 class="slide-text text01">Luxurious Scape <br> in Vancouver</h2>
+          </div>
+          
           <p>
             Welcome to The Parlor, a serene retreat nestled in the heart of the
             city. Our hotel combines modern luxury with timeless charm, offering
-            an oasis of tranquility for travelers seeking comfort and elegance.
+            an oasis of tranquility for travelers seeking comfort and elegance.<br>
             At The Parlor, we pride ourselves on providing exceptional service
             tailored to your needs. Our dedicated staff is committed to ensuring
             your stay is memorable, whether you’re here for business or leisure.
-            Each of our beautifully designed rooms is a sanctuary, featuring
-            plush furnishings and modern amenities to make you feel at home.
           </p>
         </div>
       </div>
 
-      <aside class="aboutAside">
+      <aside class="aboutAside hidden">
         <div class="aboutAsideTitle">
           
-          <h3 class="text-1">Explore Vancouver</h3>
+          <h3 class="text-1">VANCOUVER</h3>
         </div>
-        
-        <ul>
   
-            <p>COME AND VISIT:</p>
+        <ul>
+            <p>Come and Visit:</p>
           <li>
-            <a
-              href="https://www.vancouver.ca/parks-recreation-culture/stewart-falls.aspx"
-              >Stewart Falls</a
-            >
-          </li>
-          <img src="assets/images/separator.png" alt="Separator" />
-          <li>
-            <a
-              href="https://www.vancouver.ca/parks-recreation-culture/stanley-park.aspx"
+            <a target="_blank" class="aboutAsideLink"
+              href="https://vancouver.ca/parks-recreation-culture/stanley-park.aspx"
               >Stanley Park</a
             >
+          </li>     
+          <img src="assets/images/separator.png" alt="Separator" />
+          <li>
+            <a target="_blank"
+              href="https://vancouver.ca/parks-recreation-culture/seawall.aspx"
+              >Seawall</a
+            >
           </li>
           <img src="assets/images/separator.png" alt="Separator" />
           <li>
-            <a href="https://www.capbridge.com/"
+            <a target="_blank"
+            href="https://www.capbridge.com/"
               >Hot Springs</a
             >
           </li>
           <img src="assets/images/separator.png" alt="Separator" />
-          <a
-              href="https://www.vancouver.ca/parks-recreation-culture/stewart-falls.aspx"
-              >Stewart Falls</a
+          <a target="_blank"
+              href="https://www.flyovercanada.com/"
+              >FlyOver Canada</a
             >
           </li>
           <img class="canadaFlag" src="assets/images/canada.png" alt="Canada" />
@@ -131,7 +139,7 @@
 
     <!--- SERVICES -->
 
-    <section class="services">
+    <section class="services" id="sectionServices">
       <div class="servicesText">
         <p>Welcome to The Parlor Hotel Vancouver</p>
         <h2>Our Services</h2>
@@ -213,25 +221,53 @@
 
     <!--- OUR ROOMS -->
 
-    <section class="ourRooms">
+    <section class="ourRooms" id="rooms">
       
-      <div class = "ourRoomsText">
-        <p>We create memorable experiences <br>
+      <div class = "ourRoomsText fade-in">
+        <h2 >Discover Our Rooms</h2>
+        <p>We create memorable experiences
           for unique guests</p>
-        <h2>Discover Our Rooms</h2>
       </div>
       
-      <ul class="list">
-        <li class="item"><img src="./assets/images/about1.jpg" class="content"> </li>
-        <li class="item"><div class="content">Item 2</div></li>
-       
-      </ul>
-
+      <div class="carousel fade-in">
+        <div class="carouselInner">
+            <div class="carouselItem">
+                <div class="card">
+                    <img src="./assets/images/ourRooms/room1.jpeg" alt="Room 1">
+                    <div class="cardDetails">
+                        <h3>Room TENNESSEE</h3>
+                        <p>A cozy room with a beautiful view.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carouselItem">
+                <div class="card">
+                    <img src="./assets/images/ourRooms/room2.jpeg" alt="Room 2">
+                    <div class="cardDetails">
+                        <h3>Room DANNY</h3>
+                        <p>Spacious and elegant with modern amenities.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carouselItem">
+                <div class="card">
+                    <img src="./assets/images/ourRooms/room3.jpg" alt="Room 3">
+                    <div class="cardDetails">
+                        <h3>Room REMI</h3>
+                        <p>Luxurious suite for a relaxing getaway.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carouselControl prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="carouselControl next" onclick="moveSlide(1)">&#10095;</button>
+      </div>
     </section>
+
 
     <!--- CONTACT US -->
 
-    <section class="contactUs">
+    <section class="contactUs" id="sectionContact">
   
       <fieldset class=d1>
         <legend>Contact Us</legend>
@@ -255,6 +291,11 @@
 
     </section>
 
+    <!--SEPARATOR IMAGE-->
+
+    <img src="assets/images/vancouverLayout.png" alt="Separator" class="separatorImage fade-in" />
+
+
     <!--- FOOTER -->
 
     <footer>
@@ -264,17 +305,16 @@
       </div>
 
       <div class="socialMediaicons">
-        <a href="https://www.facebook.com/"><img src="assets/images/footer/facebook.svg" alt="Facebook" /></a>
+        <a href="https://www.facebook.com/" class="facebookIcon"><img src="assets/images/footer/facebook.svg" alt="Facebook" /></a>
         <a href="https://www.instagram.com/"><img src="assets/images/footer/instagram.svg" alt="Instagram" /></a>
         <a href="#"><img src="assets/images/footer/whatsapp.svg" alt="whatsapp" /></a>
       </div>
 
       <div class="copyrights"> 
-        <p>© 2021 The Parlor. All rights reserved.</p>
+        <p>© 2024 The Parlor. All rights reserved.</p>
       </div>
-
     </footer>
 
-    <script src="script.js"></script> fade-in
+    <script src="script.js"></script>
   </body>
 </html>
