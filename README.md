@@ -85,16 +85,15 @@ The website should now be visible in your default browser, and you can interact 
 ## Project Structure
 Here's a basic overview of the project structure:
 
-bash
-Copiar código
-├── assets/
-│   ├── images/               # All images used in the project
-│   ├── script/
-│   │   └── script.js         # JavaScript file for interactivity
-│   └── style/
-│       └── style.css         # Main CSS file for styling
-├── index.html                # Main HTML file for the website
-└── README.md                 # Project documentation
+    Copiar código
+    ├── assets/
+    │   ├── images/               # All images used in the project
+    │   ├── script/
+    │   │   └── script.js         # JavaScript file for interactivity
+    │   └── style/
+    │       └── style.css         # Main CSS file for styling
+    ├── index.html                # Main HTML file for the website
+    └── README.md                 # Project documentation
 
 ## Key Files
 
